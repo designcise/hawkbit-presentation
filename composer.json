@@ -1,6 +1,6 @@
 {
   "name": "hawkbit/persistence",
-  "type": "library",
+  "type": "hawkbit-component",
   "description": "Persistence layer for Hawkbit PSR-7 Micro PHP framework",
   "keywords": [
     "doctrine",
@@ -19,11 +19,11 @@
   "require": {
     "php": ">=5.5.0",
     "league/plates": "~3.0",
-    "robclancy/presenter": "~1.3.1",
-    "hawkbit/hawkbit": "~2.0"
+    "robclancy/presenter": "~1.3.1"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.8"
+    "phpunit/phpunit": "~4.8",
+    "hawkbit/hawkbit": "~2.0"
   },
   "autoload": {
     "psr-4": {
