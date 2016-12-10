@@ -63,7 +63,6 @@ use \Hawkbit\Presentation\PresentationServiceProvider;
 
 $app = new Application(require_once __DIR__ . '/config.php');
 
-
 $app->register(new PresentationServiceProvider([
     'default' => __DIR__ . '/path/to/templates',
     'another' => __DIR__ . '/path/to/other/templates',
