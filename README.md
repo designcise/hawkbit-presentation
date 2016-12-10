@@ -63,16 +63,12 @@ use \Hawkbit\Presentation\PresentationServiceProvider;
 
 $app = new Application(require_once __DIR__ . '/config.php');
 
-$entityFactoryClass = \ContainerInteropDoctrine\EntityManagerFactory::class;
 
-$PresentationService = new PresentationService([
-   PresentationService::resolveFactoryAlias($entityFactoryClass) => [$entityFactoryClass]
-], $app);
-
-$app->register(new PresentationServiceProvider($PresentationService));
+$app->register(new PresentationServiceProvider([
+    'default' => __DIR__ . '/path/to/templates',
+    'another' => __DIR__ . '/path/to/other/templates',
+]));
 ```
-
-## Examples
 
 ### Full configuration
 

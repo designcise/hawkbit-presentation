@@ -54,14 +54,7 @@ class PresentationServiceProvider extends AbstractServiceProvider
         $container = $this->getContainer();
         $this->getContainer()->add(Engine::class, function () use ($container) {
             $templates = $this->templates;
-            if (isset($templates['default'])) {
-                $default = $templates['default'];
-//                unset($templates['default']);
-            } else {
-                $default = reset($templates);
-//                $defaultKey = key($default);
-//                unset($templates[$defaultKey]);
-            }
+            $default = isset($templates['default']) ? $templates['default'] : reset($templates);
             $engine = new Engine($default);
             foreach ($templates as $name => $template) {
                 $engine->addFolder($name, $template, false);

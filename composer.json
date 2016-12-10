@@ -1,11 +1,11 @@
 {
-  "name": "hawkbit/Presentation",
+  "name": "hawkbit/presentation",
   "type": "hawkbit-component",
   "description": "Presentation layer for Hawkbit PSR-7 Micro PHP framework",
   "keywords": [
-    "doctrine",
-    "orm",
-    "Presentation",
+    "presentation",
+    "view",
+    "template",
     "hawkbit"
   ],
   "homepage": "https://github.com/HawkBitPhP",
