@@ -1,11 +1,11 @@
 {
-  "name": "hawkbit/persistence",
+  "name": "hawkbit/Presentation",
   "type": "hawkbit-component",
-  "description": "Persistence layer for Hawkbit PSR-7 Micro PHP framework",
+  "description": "Presentation layer for Hawkbit PSR-7 Micro PHP framework",
   "keywords": [
     "doctrine",
     "orm",
-    "persistence",
+    "Presentation",
     "hawkbit"
   ],
   "homepage": "https://github.com/HawkBitPhP",
@@ -18,8 +18,7 @@
   ],
   "require": {
     "php": ">=5.5.0",
-    "league/plates": "~3.0",
-    "robclancy/presenter": "~1.3.1"
+    "league/plates": "~3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.8",
@@ -27,12 +26,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Hawkbit\\Persistence\\": "src/"
+      "Hawkbit\\Presentation\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Hawkbit\\Persistence\\Tests\\": "tests/"
+      "Hawkbit\\Presentation\\Tests\\": "tests/"
     }
   },
   "scripts": {

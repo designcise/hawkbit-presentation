@@ -1,8 +1,8 @@
-# Hawkbit Persistence Changelog
+# Hawkbit Presentation Changelog
 
 ## 1.0.0
 
 ### Added
 
- - Add persistence service, service provider and documentation
+ - Add Presentation service, service provider and documentation
  

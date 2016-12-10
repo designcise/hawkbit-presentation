@@ -6,15 +6,15 @@
  * Time: 15:07
  */
 
-namespace Hawkbit\Persistence\Tests;
+namespace Hawkbit\Presentation\Tests;
 
 
 use ContainerInteropDoctrine\EntityManagerFactory;
 use Doctrine\ORM\EntityManagerInterface;
 use Hawkbit\Application;
-use Hawkbit\Persistence\PersistenceService;
-use Hawkbit\Persistence\PersistenceServiceInterface;
-use Hawkbit\Persistence\PresentationServiceProvider;
+use Hawkbit\Presentation\PresentationService;
+use Hawkbit\Presentation\PresentationServiceInterface;
+use Hawkbit\Presentation\PresentationServiceProvider;
 use League\Plates\Engine;
 use org\bovigo\vfs\vfsStream;
 
@@ -28,7 +28,6 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
 
         $engine = $app[Engine::class];
         $result = $engine->render('index', ['world' => 'World']);
-
 
         $this->assertInstanceOf(Engine::class, $engine);
         $this->assertEquals('Hello World', $result);

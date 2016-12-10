@@ -6,7 +6,7 @@
  * Time: 13:40
  */
 
-namespace Hawkbit\Persistence;
+namespace Hawkbit\Presentation;
 
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
