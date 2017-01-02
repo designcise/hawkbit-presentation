@@ -9,23 +9,22 @@
 namespace Hawkbit\Presentation;
 
 
+use Hawkbit\Configuration;
 use League\Container\ServiceProvider\AbstractServiceProvider;
+use League\Container\ServiceProvider\BootableServiceProviderInterface;
 use League\Plates\Engine;
 
-class PresentationServiceProvider extends AbstractServiceProvider
+class PresentationServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
 {
 
-    protected $provides = [
-        Engine::class
-    ];
     /**
-     * @var array
+     * @var
      */
     private $templates;
 
     /**
      * PresentationServiceProvider constructor.
-     * @param array $templates
+     * @param $templates
      */
     public function __construct($templates)
     {
@@ -41,26 +40,19 @@ class PresentationServiceProvider extends AbstractServiceProvider
      */
     public function register()
     {
-        $this->registerTemplateEngine();
+
     }
 
     /**
-     * Register template engine
+     * Method will be invoked on registration of a service provider implementing
+     * this interface. Provides ability for eager loading of Service Providers.
      *
-     * @return $this
+     * @return void
      */
-    protected function registerTemplateEngine()
+    public function boot()
     {
         $container = $this->getContainer();
-        $this->getContainer()->add(Engine::class, function () use ($container) {
-            $templates = $this->templates;
-            $default = isset($templates['default']) ? $templates['default'] : reset($templates);
-            $engine = new Engine($default);
-            foreach ($templates as $name => $template) {
-                $engine->addFolder($name, $template, false);
-            }
-            return $engine;
-        });
-        return $this;
+        $container->share(PresentationService::class)
+            ->withArgument($this->templates);
     }
 }

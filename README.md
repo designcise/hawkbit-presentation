@@ -7,7 +7,7 @@
 [![Coverage Status][ico-coveralls]][link-coveralls]
 
 Presentation layer for Hawkbit PSR-7 Micro PHP framework.
-Hawkbit Persitence uses factories of `dasprid/container-interop-doctrine` and wraps them with in a PresentationService
+Hawkbit Presentation uses [`league/plates`](http://platesphp.com/) as view engine and wraps it with in a PresentationService
 
 ## Install
 
@@ -70,23 +70,13 @@ $app->register(new PresentationServiceProvider([
 ]));
 ```
 
-### Full configuration
-
-A full configuration is available on [DASPRiD/container-interop-doctrine/example/full-config.php](https://github.com/DASPRiD/container-interop-doctrine/blob/master/example/full-config.php). 
-Refer to [container-interop-doctrine Documentation](https://github.com/DASPRiD/container-interop-doctrine) for further instructions on factories.
-
 ### Presentation from Hawbit Application
 
 ```php
 <?php
 
-/** @var \Hawkbit\Presentation\PresentationServiceInterface $Presentation */
-$Presentation = $app[\Hawkbit\Presentation\PresentationServiceInterface::class];
-
-$em = $Presentation->getEntityManager();
-
-// or with from specific connection
-$em = $Presentation->getEntityManager('connectionname');
+/** @var \Hawkbit\Presentation\PresentationService $Presentation */
+$service = $app[\Hawkbit\Presentation\PresentationService::class];
 
 ```
 
@@ -97,27 +87,57 @@ Access Presentation service in controller. Hawbit is inject classes to controlle
 ```php
 <?php
 
-use \Hawkbit\Presentation\PresentationServiceInterface;
+use \Hawkbit\Presentation\PresentationService;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
-class MyController{
-    
+class MyController
+{
     /**
-     * @var \Hawkbit\Presentation\PresentationServiceInterface 
+     * @var PresentationService
      */
-    private $Presentation = null;
-    
-    public function __construct(PresentationServiceInterface $Presentation){
-        $this->Presentation = $Presentation;
+    private $presentationService;
+
+    /**
+     * TestInjectableController constructor.
+     * @param PresentationService $presentation
+     */
+    public function __construct(PresentationService $presentation)
+    {
+        $this->presentationService = $presentation;
     }
-    
-    public function index(){
-        $em = $this->Presentation->getEntityManager();
-        
-        // or with from specific connection
-        $em = $this->Presentation->getEntityManager('connectionname');
+
+    public function getIndex(ServerRequestInterface $request, ResponseInterface $response, array $args = [])
+    {
+        $response->getBody()->write($this->presentationService->render('index', ['world' => 'World']));
+        return $response;
     }
 }
 ```
+
+### Access and extend engine
+
+In most cases you would like to extend or access plates. We recommend to extend plates
+in a central point of your application like bootstrap or even better in your project service provider.
+
+```php
+<?php
+
+use Hawkbit\Presentation\PresentationService;
+
+/** @var PresentationService $service */
+$service = $app->getContainer()->get(PresentationService::class);
+$service->getEngine()
+    ->addFolder('acme', __DIR__ . '/templates/acme')
+    ->registerFunction('uppercase', function ($string) {
+        return strtoupper($string);
+    });
+
+```
+
+### Plates
+
+Please refer to [plates documentation](http://platesphp.com) for more details.
 
 ## Change log
 
@@ -140,6 +160,7 @@ If you discover any security related issues, please email <mjls@web.de> instead 
 ## Credits
 
 - [Marco Bunge](https://github.com/mbunge)
+- [Jonathan Reinik (Plates)](https://github.com/reinink)
 - [All contributors](https://github.com/hawkbit/Presentation/graphs/contributors)
 
 ## License

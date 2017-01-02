@@ -1,5 +1,12 @@
 # Hawkbit Presentation Changelog
 
+## 1.1.0
+
+### Added
+
+ - Add Hawkbit controller constructor injection support for presentation
+ - Add presentation service for extensible engine configuration and encapsulated view logic
+
 ## 1.0.1
 
 ### Added
