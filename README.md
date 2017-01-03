@@ -167,15 +167,15 @@ If you discover any security related issues, please email <mjls@web.de> instead 
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/hawkbit/Presentation.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/hawkbit/presentation.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/HawkBitPhp/hawkbit-Presentation/master.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/hawkbit/Presentation.svg?style=flat-square
-[ico-coveralls]: https://img.shields.io/coveralls/HawkBitPhp/hawkbit-Presentation/master.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/HawkBitPhp/hawkbit-presentation/master.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/hawkbit/presentation.svg?style=flat-square
+[ico-coveralls]: https://img.shields.io/coveralls/HawkBitPhp/hawkbit-presentation/master.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/hawkbit/hawkbit
-[link-travis]: https://travis-ci.org/HawkBitPhp/hawkbit
-[link-downloads]: https://packagist.org/packages/hawkbit/hawkbit
+[link-packagist]: https://packagist.org/packages/hawkbit/presentation
+[link-travis]: https://travis-ci.org/HawkBitPhp/hawkbit-presentation
+[link-downloads]: https://packagist.org/packages/hawkbit/presentation
 [link-author]: https://github.com/mbunge
 [link-contributors]: ../../contributors
-[link-coveralls]: https://coveralls.io/github/HawkBitPhp/hawkbit
+[link-coveralls]: https://coveralls.io/github/HawkBitPhp/hawkbit-presentation
