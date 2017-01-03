@@ -82,12 +82,12 @@ $service = $app[\Hawkbit\Presentation\PresentationService::class];
 
 ### Presentation in a Hawkbit controller
 
-Access Presentation service in controller. Hawbit is inject classes to controllers by default.
+Access a presentation service in controller. Hawkbit inject classes to controllers by default.
 
 ```php
 <?php
 
-use \Hawkbit\Presentation\PresentationService;
+use Hawkbit\Presentation\PresentationService;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -100,11 +100,11 @@ class MyController
 
     /**
      * TestInjectableController constructor.
-     * @param PresentationService $presentation
+     * @param PresentationService $presentationService
      */
-    public function __construct(PresentationService $presentation)
+    public function __construct(PresentationService $presentationService)
     {
-        $this->presentationService = $presentation;
+        $this->presentationService = $presentationService;
     }
 
     public function getIndex(ServerRequestInterface $request, ResponseInterface $response, array $args = [])
@@ -117,8 +117,8 @@ class MyController
 
 ### Access and extend engine
 
-In most cases you would like to extend or access plates. We recommend to extend plates
-in a central point of your application like bootstrap or even better in your project service provider.
+In some cases you would like to extend or access plates. We recommend to extend plates
+at a central point of your application like bootstrap or even better in your project service provider.
 
 ```php
 <?php
@@ -134,6 +134,9 @@ $service->getEngine()
     });
 
 ```
+
+You are now able to [render a different view](http://platesphp.com/engine/folders/) e.g. `$presentationService->render('acme::index')` 
+and use a [view helper function](http://platesphp.com/engine/functions/) within an view (template).
 
 ### Plates
 
